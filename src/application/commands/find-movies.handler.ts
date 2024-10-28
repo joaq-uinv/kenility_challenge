@@ -1,20 +1,20 @@
 import { Inject, forwardRef } from '@nestjs/common';
 
-import { User } from '../../domain/user';
-import { UserRepository } from '../../domain/user-repository.interface';
-import { FindUsersQuery } from '../queries/find-users.query';
+import { Movie } from '../../domain/movie';
+import { MovieRepository } from '../../domain/movie-repository.interface';
+import { FindMoviesQuery } from '../queries/find-movies.query';
 
-export class FindUsersHandler {
+export class FindMoviesHandler {
   constructor(
-    @Inject(forwardRef(() => 'UserRepository'))
-    private repository: UserRepository,
+    @Inject(forwardRef(() => 'MovieRepository'))
+    private repository: MovieRepository,
   ) {}
 
-  public async handle(query: FindUsersQuery): Promise<Array<User>> {
+  public async handle(query: FindMoviesQuery): Promise<Array<Movie>> {
     let filters: any[] = [
-      // {
-      //   deleted_at: null,
-      // },
+      {
+        deleted_at: null, //valores falsies
+      },
     ];
 
     if (query.filters && Object.keys(query.filters).length) {

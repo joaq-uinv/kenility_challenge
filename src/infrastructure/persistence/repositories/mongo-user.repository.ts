@@ -20,7 +20,7 @@ export class MongoUserRepository implements UserRepository {
 
     await this.db.updateOne(
       {
-        id: primitives.id,
+        name: primitives.name,
       },
       {
         $set: primitives,
@@ -42,9 +42,9 @@ export class MongoUserRepository implements UserRepository {
     return users;
   }
 
-  async findById(id: string): Promise<User> {
+  async findByName(name: string): Promise<User> {
     const primitives = await this.db.findOne({
-      id,
+      name,
     });
 
     if (!primitives) {

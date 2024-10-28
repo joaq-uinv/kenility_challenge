@@ -1,7 +1,14 @@
 export class LoginCommand {
-  public constructor(private _id: string) {}
+  public constructor(
+    private _name: string,
+    private _password: string,
+  ) {}
 
-  get id() {
-    return this._id;
+  get name() {
+    return this._name;
+  }
+
+  get password() {
+    return this._password;
   }
 }

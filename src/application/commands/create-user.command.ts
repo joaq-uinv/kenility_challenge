@@ -1,29 +1,19 @@
 export class CreateUserCommand {
   public constructor(
-    private _id: string,
     private _name: string,
-    private _lastName: string,
-    private _address: string,
-    private _profilePicture: string,
+    private _role: string,
+    private _password: string,
   ) {}
-
-  get id() {
-    return this._id;
-  }
 
   get name() {
     return this._name;
   }
 
-  get lastName() {
-    return this._lastName;
+  get role() {
+    return this._role;
   }
 
-  get address() {
-    return this._address;
-  }
-
-  get profilePicture() {
-    return this._profilePicture;
+  get password() {
+    return this._password;
   }
 }

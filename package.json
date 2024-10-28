@@ -1,5 +1,5 @@
 {
-  "name": "kenility_challenge",
+  "name": "star_wars_api",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -25,18 +25,24 @@
     "@nestjs/jwt": "^10.2.0",
     "@nestjs/mongoose": "^10.0.10",
     "@nestjs/platform-express": "^10.4.4",
+    "@nestjs/schedule": "^4.1.1",
     "@nestjs/swagger": "^7.4.2",
+    "axios": "^1.7.7",
+    "bcrypt": "^5.1.1",
     "class-validator": "^0.14.1",
     "dotenv": "^16.4.5",
     "mongoose": "^8.7.0",
     "multer": "^1.4.5-lts.1",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.1.0",
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^10.0.0",
+    "@types/bcrypt": "^5.0.2",
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.2",
     "@types/multer": "^1.4.12",
@@ -72,6 +78,10 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>",
+      "<rootDir>/../test"
+    ]
   }
 }

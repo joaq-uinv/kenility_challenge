@@ -1,23 +1,14 @@
 import { Module } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 
 import { ApplicationModule } from '../application/application.module';
 
-import { RegisterAction } from './actions/register.action';
-import { LoginAction } from './actions/login.action';
-import { CreateUserAction } from './actions/create-user.action';
-import { UpdateUserAction } from './actions/update-user.action';
-import { FindUsersAction } from './actions/find-users.action';
-import { AddImageAction } from './actions/add-image.action';
+import { AuthActions } from './actions/auth.actions';
+import { MovieActions } from './actions/movie.actions';
 
 @Module({
   imports: [ApplicationModule],
-  controllers: [
-    RegisterAction,
-    LoginAction,
-    CreateUserAction,
-    UpdateUserAction,
-    FindUsersAction,
-    AddImageAction,
-  ],
+  controllers: [AuthActions, MovieActions],
+  providers: [JwtService],
 })
 export class ApiModule {}

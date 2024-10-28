@@ -1,5 +1,7 @@
 import { Inject, Injectable, BadRequestException } from '@nestjs/common';
 
+import { hash } from 'bcrypt';
+
 import { CreateUserCommand } from './create-user.command';
 
 import { User } from '../../domain/user';
@@ -14,21 +16,18 @@ export class CreateUserHandler {
   ) {}
 
   public async handle(command: CreateUserCommand): Promise<void> {
-    let user = await this.repository.findById(command.id);
+    let user = await this.repository.findByName(command.name);
 
     if (user) {
       throw new BadRequestException(
-        `user with id: ${command.id} already exists`,
+        `user with name: ${command.name} already exists`,
       );
     }
 
-    user = User.create(
-      command.id,
-      command.name,
-      command.lastName,
-      command.address,
-      command.profilePicture,
-    );
+    const saltRounds = 10;
+    const password = await hash(command.password, saltRounds);
+
+    user = User.create(command.name, command.role, password);
 
     await this.repository.save(user);
   }

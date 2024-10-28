@@ -45,68 +45,11 @@ $ npm run start:dev
 
 # production mode
 $ npm run start:prod
+
+# tests
+$ npm run test
 ```
 
-## Examples of available endpoints
+## Documentation
 
-`POST /auth/register`
-
-```bash
-curl --location 'http://localhost:3000/auth/register' \
---header 'Content-Type: application/json' \
---data '{
-    "id": "9f78af1b-16e6-43d0-ac6c-413c3b2ebd28",
-    "name": "joaquin",
-    "lastName": "villanueva"
-}'
-```
-
-`POST /auth/login`
-
-```bash
-curl --location 'http://localhost:3000/auth/login' \
---header 'Content-Type: application/json' \
---data '{
-    "id": "9f78af1b-16e6-43d0-ac6c-413c3b2ebd28"
-}'
-```
-
-`GET /users`
-
-```bash
-curl --location --globoff 'http://localhost:3000/users' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiam9hcXVpbiIsImxhc3ROYW1lIjoidmlsbGFudWV2YSIsImFkZHJlc3MiOm51bGwsInByb2ZpbGVQaWN0dXJlIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyNC0xMC0wNlQxODowODoyMS41OThaIiwidXBkYXRlZF9hdCI6IjIwMjQtMTAtMDZUMTg6MDg6MjEuNTk4WiIsImRlbGV0ZWRfYXQiOiIxOTcwLTAxLTAxVDAwOjAwOjAwLjAwMFoiLCJpYXQiOjE3MjgyNDIzMzh9.Hpcnx82Vu00JaJ--INdvUDe4WmsYH2WNTaHdDvUmIqw'
-```
-
-- to filter by, say, name, add the following query param: `?filters[name]=${name}`
-
-`POST /users`
-
-```bash
-curl --location 'http://localhost:3000/users' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiam9hcXVpbiIsImxhc3ROYW1lIjoidmlsbGFudWV2YSIsImFkZHJlc3MiOm51bGwsInByb2ZpbGVQaWN0dXJlIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyNC0xMC0wNlQxODowODoyMS41OThaIiwidXBkYXRlZF9hdCI6IjIwMjQtMTAtMDZUMTg6MDg6MjEuNTk4WiIsImRlbGV0ZWRfYXQiOiIxOTcwLTAxLTAxVDAwOjAwOjAwLjAwMFoiLCJpYXQiOjE3MjgyNDIzMzh9.Hpcnx82Vu00JaJ--INdvUDe4WmsYH2WNTaHdDvUmIqw' \
---data '{
-    "name": "joaquin",
-    "lastName": "villanueva"
-}'
-```
-
-`PUT /users/:id`
-
-```bash
-curl --location --request PUT 'http://localhost:3000/users/9f78af1b-16e6-43d0-ac6c-413c3b2ebd28' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiam9hcXVpbiIsImxhc3ROYW1lIjoidmlsbGFudWV2YSIsImFkZHJlc3MiOm51bGwsInByb2ZpbGVQaWN0dXJlIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyNC0xMC0wNlQxODowODoyMS41OThaIiwidXBkYXRlZF9hdCI6IjIwMjQtMTAtMDZUMTg6MDg6MjEuNTk4WiIsImRlbGV0ZWRfYXQiOiIxOTcwLTAxLTAxVDAwOjAwOjAwLjAwMFoiLCJpYXQiOjE3MjgyNDIzMzh9.Hpcnx82Vu00JaJ--INdvUDe4WmsYH2WNTaHdDvUmIqw' \
---data '{
-    "name": "Joaquin"
-}'
-```
-
-`POST /users/:id/image`
-
-```bash
-curl --location 'http://localhost:3000/users/9f78af1b-16e6-43d0-ac6c-413c3b2ebd28/image' \
---header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiam9hcXVpbiIsImxhc3ROYW1lIjoidmlsbGFudWV2YSIsImFkZHJlc3MiOm51bGwsInByb2ZpbGVQaWN0dXJlIjpudWxsLCJjcmVhdGVkX2F0IjoiMjAyNC0xMC0wNlQxODowODoyMS41OThaIiwidXBkYXRlZF9hdCI6IjIwMjQtMTAtMDZUMTg6MDg6MjEuNTk4WiIsImRlbGV0ZWRfYXQiOiIxOTcwLTAxLTAxVDAwOjAwOjAwLjAwMFoiLCJpYXQiOjE3MjgyNDIzMzh9.Hpcnx82Vu00JaJ--INdvUDe4WmsYH2WNTaHdDvUmIqw' \
---form 'image=@"/home/joaquin/Pictures/Screenshots/Screenshot from 2024-10-05 11-20-13.png"'
-```
+- http://localhost:3000/docs

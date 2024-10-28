@@ -1,6 +1,8 @@
 import { Inject, forwardRef, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 
+import { compare } from 'bcrypt';
+
 import { LoginCommand } from './login.command';
 
 import { UserRepository } from '../../domain/user-repository.interface';
@@ -12,10 +14,12 @@ export class LoginHandler {
     private jwtService: JwtService,
   ) {}
 
-  private async validateUser(id: string): Promise<any> {
-    const user = await this.repository.findById(id);
+  private async validateUser(name: string, password: string): Promise<any> {
+    const user = await this.repository.findByName(name);
 
-    if (!user) {
+    const match = await compare(password, user.getPassword());
+
+    if (!user || !match) {
       throw new UnauthorizedException('Invalid credentials');
     }
 
@@ -23,7 +27,7 @@ export class LoginHandler {
   }
 
   public async handle(command: LoginCommand) {
-    let user = await this.validateUser(command.id);
+    let user = await this.validateUser(command.name, command.password);
 
     user = {
       ...user,

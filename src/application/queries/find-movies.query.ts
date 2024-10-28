@@ -1,4 +1,4 @@
-export class FindUsersQuery {
+export class FindMoviesQuery {
   constructor(
     private _filters: any,
     private _page: number,
