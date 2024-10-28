@@ -26,6 +26,15 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Docker image
+
+To run the following API as a Docker container you need to install docker on your system (https://docs.docker.com/engine/install/)
+Then run
+
+```bash
+$ docker compose up --build
+```
+
 ## Project setup
 
 ```bash
