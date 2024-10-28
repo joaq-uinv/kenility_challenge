@@ -28,8 +28,9 @@
 
 ## Docker image
 
-To run the following API as a Docker container you need to install docker on your system (https://docs.docker.com/engine/install/)
-Then run
+To run the following API as a Docker container you need to install docker on your system (https://docs.docker.com/engine/install/).
+
+Then run the following command
 
 ```bash
 $ docker compose up --build
