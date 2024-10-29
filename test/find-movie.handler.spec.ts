@@ -15,20 +15,23 @@ describe('FindMovieHandler', () => {
     handler = new FindMovieHandler(mockRepository as MovieRepository);
   });
 
-  //TODO: fix this
   it('should return a movie by id', async () => {
-    const movie = Movie.create(
-      faker.person.fullName(),
+    const movieId = faker.database.mongodbObjectId();
+
+    const existingMovie = Movie.create(
+      faker.lorem.words(),
       1,
-      'new_movie_title',
-      '1999-05-19',
-      faker.lorem.lines(),
+      faker.lorem.paragraphs(),
+      faker.person.fullName(),
+      faker.date.anytime().toLocaleDateString(),
     );
 
-    mockRepository.findAll = jest.fn().mockResolvedValue(movie);
+    existingMovie['_id'] = movieId;
 
-    const result = await handler.handle(movie.getId());
+    (mockRepository.findById as jest.Mock).mockResolvedValue(existingMovie);
 
-    expect(result).toEqual(movie);
+    const result = await handler.handle(movieId);
+
+    expect(result.toPrimitives()).toEqual(existingMovie.toPrimitives());
   });
 });

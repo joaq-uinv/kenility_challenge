@@ -18,20 +18,26 @@ describe('DeleteMovieHandler', () => {
     handler = new DeleteMovieHandler(mockRepository as MovieRepository);
   });
 
-  //TODO: fix this
   it('should delete a movie', async () => {
+    const movieId = faker.database.mongodbObjectId();
+
     const existingMovie = Movie.create(
-      faker.person.fullName(),
+      faker.lorem.words(),
       1,
-      'new_movie_title',
-      '1999-05-19',
-      faker.lorem.lines(),
+      faker.lorem.paragraphs(),
+      faker.person.fullName(),
+      faker.date.anytime().toLocaleDateString(),
     );
 
-    const command = new DeleteMovieCommand(existingMovie.getId());
+    existingMovie['_id'] = movieId;
+
+    const command = new DeleteMovieCommand(movieId);
+
+    (mockRepository.findById as jest.Mock).mockResolvedValue(existingMovie);
 
     await handler.handle(command);
 
-    expect(mockRepository.save).toHaveBeenCalledWith(existingMovie.getId());
+    expect(mockRepository.findById).toHaveBeenCalledWith(movieId);
+    expect(mockRepository.save).toHaveBeenCalledWith(existingMovie);
   });
 });
